@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Балаларға көмек | Qamqor</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7f0;color:#354b3b;line-height:1.7}
+header{background:#dce8d8;padding:22px;text-align:center}
+header h1{margin:0;font-size:32px}
+main{max-width:900px;margin:35px auto;padding:0 20px}
+.content{background:white;padding:25px;border-radius:18px;box-shadow:0 4px 15px #00000010}
+.content img{width:100%;max-height:400px;object-fit:cover;border-radius:14px}
+h2{color:#53745a}
+li{margin-bottom:10px}
+.button{display:inline-block;margin:8px 8px 0 0;padding:11px 20px;background:#78977a;color:white;text-decoration:none;border:0;border-radius:25px;cursor:pointer}
+.button:hover{background:#5f7e62}
+label{display:block;margin-top:12px;font-weight:bold}
+input,textarea{width:100%;padding:12px;margin-top:5px;border:1px solid #cbd8c8;border-radius:10px;font-size:15px}
+textarea{min-height:80px}
+footer{text-align:center;padding:20px;color:#667766}
+.note{font-size:13px;color:#68786a}
+</style>
+</head>
+<body>
+<header><h1>♡ Qamqor</h1><p>Жақсылық бірге жасалады</p></header>
+<main>
+<div class="content">
+<img src="images/children.jpg" alt="Балаларға көмек">
+<h2>🧸 Балаларға көмек</h2>
+<p>Әрбір бала бақытты балалық шаққа, білім алуға және қамқорлыққа
+лайық. Кейбір балаларға қосымша қолдау мен көмек қажет.
+Біз олардың өміріне қуаныш сыйлай аламыз.</p>
+<h2>Балаларға қалай көмектесеміз?</h2>
+<ul>
+<li>Балаларға кітаптар мен оқу құралдарын жинау.</li>
+<li>Қайырымдылық акцияларын ұйымдастыру.</li>
+<li>Балаларға арналған ойындар мен іс-шараларға қатысу.</li>
+<li>Киім-кешек пен ойыншықтарды мұқтаж жандарға беру.</li>
+<li>Балалардың білім алуына қолдау көрсету.</li>
+</ul>
+
+<h2 id="volunteer">♡ Осы бағытта волонтер болу</h2>
+<p>Өтінішіңді толтыр. WhatsApp арқылы жазуға немесе қоңырау шалуға болады.</p>
+<form>
+<label for="name">Аты-жөнің</label>
+<input id="name" type="text" placeholder="Атыңды енгіз" required>
+<label for="message">Қосымша ақпарат</label>
+<textarea id="message" placeholder="Қалай көмектескің келеді?"></textarea>
+<button class="button" type="button" onclick="sendWhatsApp()">WhatsApp арқылы жазу</button>
+<button class="button" type="button" onclick="callVolunteer()">Қоңырау шалу</button>
+</form>
+<p class="note">Демо-нөмір: +7 XXX XXX XX XX. Нақты нөмірді кейін енгізу керек.</p>
+<a class="button" href="index.html">← Басты бетке</a>
+</div>
+</main>
+<footer>© 2026 Qamqor — Жақсылық жасаудан шаршама!</footer>
+<script>
+const VOLUNTEER_PHONE = "";
+function getApplication(){
+ const name=document.getElementById("name").value.trim();
+ const message=document.getElementById("message").value.trim();
+ if(!name){alert("Аты-жөніңді енгіз!");return null;}
+ return "Сәлеметсіз бе! Qamqor волонтері болғым келеді.\nБағыт: Балаларға көмек\nАты-жөнім: "+name+"\nҚосымша ақпарат: "+(message||"Жоқ");
+}
+function sendWhatsApp(){
+ const text=getApplication();if(!text)return;
+ if(!VOLUNTEER_PHONE){alert("Демо-нұсқа: WhatsApp қосу үшін кодқа нақты нөмір енгізу керек.");return;}
+ window.open("https://wa.me/"+VOLUNTEER_PHONE+"?text="+encodeURIComponent(text),"_blank");
+}
+function callVolunteer(){
+ if(!getApplication())return;
+ if(!VOLUNTEER_PHONE){alert("Демо-нұсқа: қоңырау үшін кодқа нақты нөмір енгізу керек.");return;}
+ window.location.href="tel:+"+VOLUNTEER_PHONE;
+}
+</script>
+</body>
+</html>
